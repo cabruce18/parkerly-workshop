@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be First to Know | Parkerly Workshop</title>
+  <meta name="description" content="Be first to know when Parkerly Workshop opening classes drop in Whitehouse, Texas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --blue:#0052CC;
+      --pink:#FF1493;
+      --yellow:#FFD700;
+      --orange:#FF6B00;
+      --green:#00A651;
+      --lavender:#8B5CF6;
+      --cream:#FFF8F0;
+      --cream-dark:#F5EDE0;
+      --off-white:#FEFCF8;
+      --ink:#1A1A1A;
+      --warm:#6B5E52;
+      --display:'League Spartan',sans-serif;
+      --body:'DM Sans',sans-serif;
+      --outline:2.5px solid var(--ink);
+      --shadow:6px 6px 0 var(--ink);
+      --shadow-small:4px 4px 0 var(--ink);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--body);line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+
+    .preview-bar{
+      background:var(--yellow);
+      border-bottom:var(--outline);
+      padding:8px 18px;
+      text-align:center;
+      font-family:var(--display);
+      font-weight:800;
+      letter-spacing:.055em;
+      text-transform:uppercase;
+      font-size:.76rem;
+    }
+
+    nav{height:72px;background:var(--off-white);border-bottom:var(--outline);display:flex;align-items:center}
+    .nav-inner{width:min(1180px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.2rem;font-weight:900;letter-spacing:-.01em;text-transform:uppercase}
+    .mark{width:38px;height:38px;border:2px solid var(--ink);border-radius:5px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;box-shadow:2px 2px 0 var(--ink)}
+    .mark span:nth-child(1){background:var(--blue)}
+    .mark span:nth-child(2){background:var(--yellow)}
+    .mark span:nth-child(3){background:var(--pink)}
+    .mark span:nth-child(4){background:var(--green)}
+    .back{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:.82rem;letter-spacing:.045em;border-bottom:2px solid transparent}
+    .back:hover{border-color:var(--pink);color:var(--pink)}
+
+    main{position:relative;overflow:hidden}
+    .hero{width:min(1180px,calc(100% - 40px));margin:auto;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(360px,.78fr);gap:64px;align-items:start;padding:74px 0 88px;position:relative}
+
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--yellow);border:var(--outline);border-radius:4px;padding:7px 13px;font-family:var(--display);font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;box-shadow:3px 3px 0 var(--ink);margin-bottom:24px;transform:rotate(-1deg)}
+    h1,h2,h3{font-family:var(--display);font-weight:900;line-height:.94;letter-spacing:-.035em;margin:0}
+    h1{font-size:clamp(4.1rem,8.5vw,7.6rem);max-width:7.3ch;text-transform:uppercase}
+    h1 .pink{color:var(--pink)}
+    h1 .blue{color:var(--blue)}
+    .lead{font-size:1.16rem;line-height:1.65;color:var(--warm);max-width:590px;margin:28px 0 26px}
+    .launch-date{display:inline-flex;flex-direction:column;background:var(--off-white);border:var(--outline);box-shadow:var(--shadow-small);padding:15px 20px;transform:rotate(.6deg);margin-top:4px}
+    .launch-date span:first-child{font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.74rem;color:var(--warm)}
+    .launch-date span:last-child{font-family:var(--display);font-weight:900;font-size:1.55rem;line-height:1.05;margin-top:3px;text-transform:uppercase}
+
+    .what-youll-get{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px;max-width:610px}
+    .chip{border:2px solid var(--ink);border-radius:999px;background:var(--off-white);padding:8px 12px;font-size:.82rem;font-weight:700;box-shadow:2px 2px 0 var(--ink)}
+    .chip:nth-child(1){background:#FFE0F0}
+    .chip:nth-child(2){background:#DDEEFF}
+    .chip:nth-child(3){background:#FFF5CC}
+
+    .form-wrap{position:sticky;top:28px}
+    .form-card{background:var(--off-white);border:3px solid var(--ink);border-radius:16px;box-shadow:9px 9px 0 var(--ink);overflow:hidden}
+    .form-top{background:var(--pink);border-bottom:3px solid var(--ink);padding:24px 26px 20px;position:relative}
+    .form-top:after{content:'✦';position:absolute;right:20px;top:14px;font-size:2.5rem;transform:rotate(15deg)}
+    .form-top h2{font-size:clamp(2rem,4vw,3rem);text-transform:uppercase;color:var(--off-white)}
+    .form-top p{margin:8px 0 0;color:#fff;font-weight:600;max-width:34ch}
+    form{padding:25px 26px 28px}
+    .field{margin-bottom:17px}
+    label{display:block;font-family:var(--display);font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.055em;margin-bottom:6px}
+    .required{color:var(--pink)}
+    input,textarea,select{width:100%;border:2px solid var(--ink);background:var(--cream);border-radius:6px;padding:12px 13px;color:var(--ink);outline:none;transition:box-shadow .15s,transform .15s}
+    input:focus,textarea:focus,select:focus{box-shadow:3px 3px 0 var(--blue);transform:translate(-1px,-1px)}
+    textarea{min-height:86px;resize:vertical}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .hint{font-size:.76rem;color:var(--warm);margin-top:5px}
+    .sms{display:flex;align-items:flex-start;gap:10px;padding:13px;background:var(--cream-dark);border:2px solid var(--ink);border-radius:8px;margin:19px 0}
+    .sms input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--pink);flex:0 0 auto}
+    .sms label{font-family:var(--body);font-weight:600;text-transform:none;letter-spacing:0;font-size:.87rem;line-height:1.4;margin:0}
+    .sms small{display:block;color:var(--warm);font-weight:400;margin-top:4px;font-size:.72rem}
+
+    .submit{width:100%;border:var(--outline);background:var(--yellow);color:var(--ink);box-shadow:var(--shadow-small);border-radius:6px;padding:15px 20px;font-family:var(--display);font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:transform .15s,box-shadow .15s}
+    .submit:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+    .privacy{text-align:center;font-size:.72rem;color:var(--warm);margin:13px 10px 0}
+
+    .doodle{position:absolute;pointer-events:none;user-select:none;font-family:var(--display);font-weight:900;z-index:-1}
+    .d1{right:-35px;top:18px;font-size:8rem;color:var(--yellow);transform:rotate(13deg)}
+    .d2{left:-50px;bottom:20px;font-size:6rem;color:var(--lavender);transform:rotate(-16deg)}
+    .squiggle{width:120px;height:24px;margin-top:28px}
+    .squiggle svg{width:100%;height:100%;overflow:visible}
+
+    .bottom-band{background:var(--blue);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+    .band-inner{width:min(1180px,calc(100% - 40px));margin:auto;padding:28px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+    .band-inner strong{font-family:var(--display);font-weight:900;text-transform:uppercase;color:white;font-size:1.15rem;letter-spacing:.02em}
+    .band-inner span{color:rgba(255,255,255,.8);font-size:.9rem}
+    .mini-icons{display:flex;gap:7px}
+    .mini-icons i{display:block;width:20px;height:20px;border:2px solid var(--ink)}
+    .mini-icons i:nth-child(1){background:var(--yellow)}
+    .mini-icons i:nth-child(2){background:var(--pink)}
+    .mini-icons i:nth-child(3){background:var(--green)}
+    .mini-icons i:nth-child(4){background:var(--orange)}
+
+    footer{background:var(--ink);color:white;padding:32px 0}
+    .footer-inner{width:min(1180px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .footer-inner div:first-child{font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:.03em}
+    .footer-inner div:last-child{font-size:.8rem;color:#a9978b}
+
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;gap:42px;padding-top:54px}
+      .form-wrap{position:static}
+      h1{max-width:8ch}
+    }
+    @media(max-width:580px){
+      .preview-bar{font-size:.66rem}
+      .hero{width:min(100% - 28px,1180px);padding:42px 0 64px}
+      .nav-inner,.band-inner,.footer-inner{width:min(100% - 28px,1180px)}
+      nav{height:66px}
+      .brand{font-size:1.05rem}
+      .mark{width:34px;height:34px}
+      .back{font-size:.72rem}
+      h1{font-size:clamp(3.35rem,18vw,5rem)}
+      .lead{font-size:1.02rem}
+      .two{grid-template-columns:1fr}
+      .form-top,form{padding-left:20px;padding-right:20px}
+      .launch-date span:last-child{font-size:1.35rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-bar">Preview only — this page is not collecting real signups yet</div>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="../index.html" aria-label="Parkerly home">
+        <span class="mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        Parkerly
+      </a>
+      <a class="back" href="../index.html">← Back to Parkerly</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="doodle d1">✦</div>
+    <div class="doodle d2">✺</div>
+
+    <section class="hero">
+      <div class="copy">
+        <div class="eyebrow">Whitehouse, Texas ✦</div>
+        <h1><span class="pink">Parkerly</span><br>is <span class="blue">coming.</span></h1>
+        <p class="lead">Our first workshop lineup is almost ready. Join the first-to-know list and we'll tell you when the opening classes are announced — and the second booking goes live.</p>
+
+        <div class="launch-date">
+          <span>Target booking day</span>
+          <span>October 1, 2026</span>
+        </div>
+
+        <div class="what-youll-get" aria-label="Waitlist benefits">
+          <span class="chip">Opening class reveals</span>
+          <span class="chip">Booking-day reminder</span>
+          <span class="chip">Limited-seat alerts</span>
+        </div>
+
+        <div class="squiggle" aria-hidden="true">
+          <svg viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 14C16 2 26 24 40 12C54 0 64 22 79 11C93 1 102 18 118 8" stroke="#00A651" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-card">
+          <div class="form-top">
+            <h2>Be first to know.</h2>
+            <p>Tell us where to send the good stuff.</p>
+          </div>
+
+          <form id="waitlistForm">
+            <div class="two">
+              <div class="field">
+                <label for="name">Parent / guardian name <span class="required">*</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name">
+              </div>
+              <div class="field">
+                <label for="ages">Child age(s)</label>
+                <input id="ages" name="ages" type="text" placeholder="Ex: 5, 8, 11">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="email">Email <span class="required">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+            </div>
+
+            <div class="field">
+              <label for="phone">Mobile number</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(903) 555-0123">
+              <div class="hint">Optional — add it if you'd like the option for booking-drop texts later.</div>
+            </div>
+
+            <div class="field">
+              <label for="thing">What would your kid lose their mind over?</label>
+              <textarea id="thing" name="thing" placeholder="Woodworking? Baking? Photography? Flowers? Science? Something weird and wonderful?"></textarea>
+            </div>
+
+            <div class="sms">
+              <input id="sms" name="sms" type="checkbox">
+              <label for="sms">Yes, I'd like Parkerly text updates too.
+                <small>When SMS is connected, this will include consent language and opt-out instructions. No text service is connected in this preview.</small>
+              </label>
+            </div>
+
+            <button class="submit" type="submit">Put me on the list →</button>
+            <p class="privacy">We won't sell your information or flood your inbox. Parkerly updates only.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom-band">
+      <div class="band-inner">
+        <div>
+          <strong>Small classes. Big things to try.</strong><br>
+          <span>Opening workshops will be intentionally limited.</span>
+        </div>
+        <div class="mini-icons" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>Parkerly Workshop · Whitehouse, Texas</div>
+      <div>Try everything. Find your thing.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('waitlistForm').addEventListener('submit', function(event){
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      if(name){ sessionStorage.setItem('parkerlyPreviewName', name.split(/\s+/)[0]); }
+      window.location.href = 'thanks.html';
+    });
+  </script>
+</body>
+</html>
