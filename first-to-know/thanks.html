@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>You've Got First Dibs | Parkerly Workshop</title>
-  <meta name="description" content="You're on the Parkerly Workshop first-to-know list preview.">
+  <meta name="description" content="You're on the Parkerly Workshop first-to-know list.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@700;800;900&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
   </style>
 </head>
 <body>
-  <div class="preview-bar">Preview only — no signup was saved</div>
+  <div class="preview-bar" id="previewBar">Preview only — no signup was saved</div>
   <nav>
     <div class="nav-inner">
       <a class="brand" href="../index.html"><span class="mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Parkerly</a>
@@ -49,7 +49,7 @@
       <p class="message" id="message">You're on the Parkerly list! We'll make sure you're one of the first to see the opening lineup AND know when booking opens.</p>
       <p class="tease">Until then... start thinking about what they want to try first. 👀</p>
       <div class="date">Target booking day · October 1, 2026</div>
-      <div class="note"><strong>For this GitHub preview:</strong> the form flow works, but nothing you entered was stored or sent anywhere. We'll connect the real email + optional text list after you approve the design.</div>
+      <div class="note" id="previewNote"><strong>For this GitHub preview:</strong> the form flow works, but nothing you entered was stored or sent anywhere. The live version will save the signup and connect opted-in mobile numbers to Parkerly text updates.</div>
       <div class="actions">
         <a class="btn primary" href="index.html">Back to signup</a>
         <a class="btn secondary" href="../index.html">Back to Parkerly</a>
@@ -61,6 +61,11 @@
 
   <script>
     const firstName=sessionStorage.getItem('parkerlyPreviewName');
+    const isGitHubPreview=window.location.hostname.endsWith('github.io');
+    if(!isGitHubPreview){
+      document.getElementById('previewBar').hidden=true;
+      document.getElementById('previewNote').hidden=true;
+    }
     if(firstName){
       document.getElementById('message').textContent=firstName + ", you're on the Parkerly list! We'll make sure you're one of the first to see the opening lineup AND know when booking opens.";
     }
