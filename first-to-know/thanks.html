@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're In | Parkerly Workshop</title>
+  <meta name="description" content="You're on the Parkerly Workshop first-to-know list preview.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --blue:#0052CC;--pink:#FF1493;--yellow:#FFD700;--orange:#FF6B00;--green:#00A651;--lavender:#8B5CF6;
+      --cream:#FFF8F0;--off-white:#FEFCF8;--ink:#1A1A1A;--warm:#6B5E52;--display:'League Spartan',sans-serif;--body:'DM Sans',sans-serif;
+      --outline:2.5px solid var(--ink);--shadow:7px 7px 0 var(--ink)
+    }
+    *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--body)}a{text-decoration:none;color:inherit}
+    .preview-bar{background:var(--yellow);border-bottom:var(--outline);padding:8px 18px;text-align:center;font-family:var(--display);font-weight:800;letter-spacing:.055em;text-transform:uppercase;font-size:.76rem}
+    nav{height:72px;background:var(--off-white);border-bottom:var(--outline);display:flex;align-items:center}.nav-inner{width:min(1180px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.2rem;font-weight:900;text-transform:uppercase}.mark{width:38px;height:38px;border:2px solid var(--ink);border-radius:5px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;box-shadow:2px 2px 0 var(--ink)}
+    .mark span:nth-child(1){background:var(--blue)}.mark span:nth-child(2){background:var(--yellow)}.mark span:nth-child(3){background:var(--pink)}.mark span:nth-child(4){background:var(--green)}
+    .wrap{min-height:calc(100vh - 111px);display:flex;align-items:center;justify-content:center;padding:70px 20px;position:relative;overflow:hidden}
+    .card{width:min(760px,100%);background:var(--off-white);border:3px solid var(--ink);border-radius:18px;box-shadow:10px 10px 0 var(--ink);padding:56px 52px;text-align:center;position:relative;z-index:2}
+    .tiny{display:inline-block;background:var(--blue);color:#fff;border:var(--outline);padding:7px 12px;border-radius:4px;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:.76rem;letter-spacing:.08em;transform:rotate(-1deg);box-shadow:3px 3px 0 var(--ink)}
+    h1{font-family:var(--display);font-size:clamp(4rem,11vw,7.6rem);line-height:.88;letter-spacing:-.05em;text-transform:uppercase;margin:26px 0 18px}.pink{color:var(--pink)}
+    .message{font-size:1.15rem;line-height:1.65;color:var(--warm);max-width:540px;margin:0 auto}.date{margin:30px auto 0;display:inline-block;background:var(--yellow);border:var(--outline);box-shadow:4px 4px 0 var(--ink);padding:12px 18px;font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:.025em;font-size:1.15rem;transform:rotate(.5deg)}
+    .note{margin:28px auto 0;max-width:540px;padding:14px 16px;background:#FFF5CC;border:2px dashed var(--ink);font-size:.82rem;color:var(--warm);line-height:1.5}.actions{margin-top:30px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border:var(--outline);border-radius:6px;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:.86rem;letter-spacing:.04em;box-shadow:4px 4px 0 var(--ink);transition:.15s}.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}.primary{background:var(--pink);color:#fff}.secondary{background:var(--cream)}
+    .d{position:absolute;font-family:var(--display);font-weight:900;user-select:none;z-index:1}.d1{left:4%;top:15%;color:var(--green);font-size:7rem;transform:rotate(-15deg)}.d2{right:5%;bottom:13%;color:var(--lavender);font-size:8rem;transform:rotate(18deg)}.d3{right:12%;top:8%;color:var(--orange);font-size:4rem;transform:rotate(-8deg)}
+    footer{height:39px;background:var(--ink);color:#a9978b;display:flex;align-items:center;justify-content:center;font-size:.76rem}
+    @media(max-width:600px){.preview-bar{font-size:.66rem}.nav-inner{width:min(100% - 28px,1180px)}nav{height:66px}.brand{font-size:1.05rem}.mark{width:34px;height:34px}.card{padding:42px 22px}.wrap{padding:50px 14px}.message{font-size:1.02rem}.date{font-size:1rem}.actions{flex-direction:column}.btn{width:100%}.d1,.d2,.d3{opacity:.22}}
+  </style>
+</head>
+<body>
+  <div class="preview-bar">Preview only — no signup was saved</div>
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="../index.html"><span class="mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Parkerly</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="d d1" aria-hidden="true">✺</div>
+    <div class="d d2" aria-hidden="true">✦</div>
+    <div class="d d3" aria-hidden="true">⌁</div>
+
+    <section class="card">
+      <div class="tiny">First-to-know preview ✦</div>
+      <h1><span class="pink">You're</span><br>in.</h1>
+      <p class="message" id="message">Parkerly is coming to Whitehouse. You'll be among the first to hear when our opening workshops are revealed and when booking goes live.</p>
+      <div class="date">Target booking day · October 1, 2026</div>
+      <div class="note"><strong>For this GitHub preview:</strong> the form flow works, but nothing you entered was stored or sent anywhere. We'll connect the real email + optional text list after you approve the design.</div>
+      <div class="actions">
+        <a class="btn primary" href="index.html">Back to signup</a>
+        <a class="btn secondary" href="../index.html">Back to Parkerly</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>Try everything. Find your thing. · Parkerly Workshop · Whitehouse, Texas</footer>
+
+  <script>
+    const firstName=sessionStorage.getItem('parkerlyPreviewName');
+    if(firstName){
+      document.getElementById('message').textContent=firstName + ", Parkerly is coming to Whitehouse. You'll be among the first to hear when our opening workshops are revealed and when booking goes live.";
+    }
+  </script>
+</body>
+</html>
