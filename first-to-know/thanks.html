@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You're In | Parkerly Workshop</title>
+  <title>You've Got First Dibs | Parkerly Workshop</title>
   <meta name="description" content="You're on the Parkerly Workshop first-to-know list preview.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,8 +22,8 @@
     .wrap{min-height:calc(100vh - 111px);display:flex;align-items:center;justify-content:center;padding:70px 20px;position:relative;overflow:hidden}
     .card{width:min(760px,100%);background:var(--off-white);border:3px solid var(--ink);border-radius:18px;box-shadow:10px 10px 0 var(--ink);padding:56px 52px;text-align:center;position:relative;z-index:2}
     .tiny{display:inline-block;background:var(--blue);color:#fff;border:var(--outline);padding:7px 12px;border-radius:4px;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:.76rem;letter-spacing:.08em;transform:rotate(-1deg);box-shadow:3px 3px 0 var(--ink)}
-    h1{font-family:var(--display);font-size:clamp(4rem,11vw,7.6rem);line-height:.88;letter-spacing:-.05em;text-transform:uppercase;margin:26px 0 18px}.pink{color:var(--pink)}
-    .message{font-size:1.15rem;line-height:1.65;color:var(--warm);max-width:540px;margin:0 auto}.date{margin:30px auto 0;display:inline-block;background:var(--yellow);border:var(--outline);box-shadow:4px 4px 0 var(--ink);padding:12px 18px;font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:.025em;font-size:1.15rem;transform:rotate(.5deg)}
+    h1{font-family:var(--display);font-size:clamp(3.7rem,10vw,7rem);line-height:.88;letter-spacing:-.05em;text-transform:uppercase;margin:26px 0 18px}.pink{color:var(--pink)}
+    .message{font-size:1.15rem;line-height:1.65;color:var(--warm);max-width:570px;margin:0 auto}.tease{font-family:var(--display);font-weight:800;font-size:1.05rem;line-height:1.35;margin:24px auto 0;max-width:540px}.date{margin:30px auto 0;display:inline-block;background:var(--yellow);border:var(--outline);box-shadow:4px 4px 0 var(--ink);padding:12px 18px;font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:.025em;font-size:1.15rem;transform:rotate(.5deg)}
     .note{margin:28px auto 0;max-width:540px;padding:14px 16px;background:#FFF5CC;border:2px dashed var(--ink);font-size:.82rem;color:var(--warm);line-height:1.5}.actions{margin-top:30px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border:var(--outline);border-radius:6px;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:.86rem;letter-spacing:.04em;box-shadow:4px 4px 0 var(--ink);transition:.15s}.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}.primary{background:var(--pink);color:#fff}.secondary{background:var(--cream)}
     .d{position:absolute;font-family:var(--display);font-weight:900;user-select:none;z-index:1}.d1{left:4%;top:15%;color:var(--green);font-size:7rem;transform:rotate(-15deg)}.d2{right:5%;bottom:13%;color:var(--lavender);font-size:8rem;transform:rotate(18deg)}.d3{right:12%;top:8%;color:var(--orange);font-size:4rem;transform:rotate(-8deg)}
     footer{height:39px;background:var(--ink);color:#a9978b;display:flex;align-items:center;justify-content:center;font-size:.76rem}
@@ -44,9 +44,10 @@
     <div class="d d3" aria-hidden="true">⌁</div>
 
     <section class="card">
-      <div class="tiny">First-to-know preview ✦</div>
-      <h1><span class="pink">You're</span><br>in.</h1>
-      <p class="message" id="message">Parkerly is coming to Whitehouse. You'll be among the first to hear when our opening workshops are revealed and when booking goes live.</p>
+      <div class="tiny">First dibs locked in ✦</div>
+      <h1><span class="pink">You've got</span><br>first dibs.</h1>
+      <p class="message" id="message">You're on the Parkerly list! We'll make sure you're one of the first to see the opening lineup AND know when booking opens.</p>
+      <p class="tease">Until then... start thinking about what they want to try first. 👀</p>
       <div class="date">Target booking day · October 1, 2026</div>
       <div class="note"><strong>For this GitHub preview:</strong> the form flow works, but nothing you entered was stored or sent anywhere. We'll connect the real email + optional text list after you approve the design.</div>
       <div class="actions">
@@ -61,7 +62,7 @@
   <script>
     const firstName=sessionStorage.getItem('parkerlyPreviewName');
     if(firstName){
-      document.getElementById('message').textContent=firstName + ", Parkerly is coming to Whitehouse. You'll be among the first to hear when our opening workshops are revealed and when booking goes live.";
+      document.getElementById('message').textContent=firstName + ", you're on the Parkerly list! We'll make sure you're one of the first to see the opening lineup AND know when booking opens.";
     }
   </script>
 </body>
