@@ -95,6 +95,7 @@
     .sms input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--pink);flex:0 0 auto}
     .sms label{font-family:var(--body);font-weight:600;text-transform:none;letter-spacing:0;font-size:.87rem;line-height:1.4;margin:0}
     .sms small{display:block;color:var(--warm);font-weight:400;margin-top:4px;font-size:.72rem}
+    .sms small a{text-decoration:underline;font-weight:700}
 
     .submit{width:100%;border:var(--outline);background:var(--yellow);color:var(--ink);box-shadow:var(--shadow-small);border-radius:6px;padding:15px 20px;font-family:var(--display);font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:transform .15s,box-shadow .15s}
     .submit:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
@@ -211,7 +212,7 @@
             <div class="field">
               <label for="phone">Mobile number</label>
               <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(903) 555-0123">
-              <div class="hint">Optional — add it if you'd like the option for booking-drop texts later.</div>
+              <div class="hint">Optional unless you want Parkerly text updates.</div>
             </div>
 
             <div class="field">
@@ -222,7 +223,7 @@
             <div class="sms">
               <input id="sms" name="sms" type="checkbox">
               <label for="sms">Yes, I'd like Parkerly text updates too.
-                <small>When SMS is connected, this will include consent language and opt-out instructions. No text service is connected in this preview.</small>
+                <small>By checking this box, you agree to receive recurring automated marketing text messages from Parkerly Workshop. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. See <a href="../terms.html" target="_blank" rel="noopener">Terms</a> &amp; <a href="../privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</small>
               </label>
             </div>
 
@@ -252,8 +253,21 @@
   </footer>
 
   <script>
-    document.getElementById('waitlistForm').addEventListener('submit', function(event){
+    const form = document.getElementById('waitlistForm');
+    const sms = document.getElementById('sms');
+    const phone = document.getElementById('phone');
+
+    sms.addEventListener('change', function(){
+      phone.required = sms.checked;
+    });
+
+    form.addEventListener('submit', function(event){
       event.preventDefault();
+      if(sms.checked && !phone.value.trim()){
+        phone.required = true;
+        phone.reportValidity();
+        return;
+      }
       const name = document.getElementById('name').value.trim();
       if(name){ sessionStorage.setItem('parkerlyPreviewName', name.split(/\s+/)[0]); }
       window.location.href = 'thanks.html';
