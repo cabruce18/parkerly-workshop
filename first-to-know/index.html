@@ -99,7 +99,9 @@
 
     .submit{width:100%;border:var(--outline);background:var(--yellow);color:var(--ink);box-shadow:var(--shadow-small);border-radius:6px;padding:15px 20px;font-family:var(--display);font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:transform .15s,box-shadow .15s}
     .submit:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+    .submit:disabled{cursor:wait;opacity:.75;transform:none;box-shadow:var(--shadow-small)}
     .privacy{text-align:center;font-size:.72rem;color:var(--warm);margin:13px 10px 0}
+    .form-status{text-align:center;font-size:.78rem;font-weight:700;color:var(--pink);margin:12px 8px 0;min-height:1.2em}
 
     .doodle{position:absolute;pointer-events:none;user-select:none;font-family:var(--display);font-weight:900;z-index:-1}
     .d1{right:-35px;top:18px;font-size:8rem;color:var(--yellow);transform:rotate(13deg)}
@@ -192,7 +194,10 @@
             <p>Tell us where to send the good stuff.</p>
           </div>
 
-          <form id="waitlistForm">
+          <form id="waitlistForm" name="parkerly-first-dibs" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="parkerly-first-dibs">
+            <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+
             <div class="two">
               <div class="field">
                 <label for="name">Parent / guardian name <span class="required">*</span></label>
@@ -228,6 +233,7 @@
             </div>
 
             <button class="submit" type="submit">I want first dibs →</button>
+            <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
             <p class="privacy">We won't sell your information or flood your inbox. Parkerly updates only.</p>
           </form>
         </div>
@@ -256,21 +262,75 @@
     const form = document.getElementById('waitlistForm');
     const sms = document.getElementById('sms');
     const phone = document.getElementById('phone');
+    const submitButton = form.querySelector('.submit');
+    const formStatus = document.getElementById('formStatus');
+    const isGitHubPreview = window.location.hostname.endsWith('github.io');
 
     sms.addEventListener('change', function(){
       phone.required = sms.checked;
     });
 
-    form.addEventListener('submit', function(event){
+    form.addEventListener('submit', async function(event){
       event.preventDefault();
+
       if(sms.checked && !phone.value.trim()){
         phone.required = true;
         phone.reportValidity();
         return;
       }
+
       const name = document.getElementById('name').value.trim();
       if(name){ sessionStorage.setItem('parkerlyPreviewName', name.split(/\s+/)[0]); }
-      window.location.href = 'thanks.html';
+
+      if(isGitHubPreview){
+        window.location.href = 'thanks.html';
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Locking in first dibs...';
+      formStatus.textContent = '';
+
+      try{
+        const formData = new FormData(form);
+        formData.set('smsConsent', sms.checked ? 'yes' : 'no');
+        const encoded = new URLSearchParams();
+        for(const [key, value] of formData.entries()) encoded.append(key, value);
+
+        const saved = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encoded.toString()
+        });
+
+        if(!saved.ok) throw new Error('We hit a snag saving your first dibs. Please try again.');
+
+        if(sms.checked){
+          const smsResponse = await fetch('/.netlify/functions/first-dibs', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name,
+              email: document.getElementById('email').value.trim(),
+              phone: phone.value.trim(),
+              ages: document.getElementById('ages').value.trim(),
+              thing: document.getElementById('thing').value.trim(),
+              smsConsent: true
+            })
+          });
+
+          const smsResult = await smsResponse.json().catch(() => ({}));
+          if(!smsResponse.ok || !smsResult.ok){
+            throw new Error(smsResult.message || 'Your form was saved, but text updates did not connect. Please try again.');
+          }
+        }
+
+        window.location.href = 'thanks.html';
+      }catch(error){
+        formStatus.textContent = error.message || 'Something went wrong. Please try again.';
+        submitButton.disabled = false;
+        submitButton.textContent = 'I want first dibs →';
+      }
     });
   </script>
 </body>
